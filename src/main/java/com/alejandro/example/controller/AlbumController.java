@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alejandro.example.entity.AlbumEntity;
@@ -96,6 +97,17 @@ public class AlbumController {
 	public  ResponseEntity<?> removeTrack(@RequestBody TrackEntity entity, @PathVariable Long id) {
 		try {
 			return ResponseEntity.ok().body(this.service.removeTrack(entity, id));
+		} catch (NoSuchElementException e) {
+			return ResponseEntity
+					.status(HttpStatus.NOT_FOUND)
+					.body(new ResponseModel(LocalDateTime.now(), null, e.getMessage()));
+		}
+	}
+	
+	@GetMapping("between")
+	public  ResponseEntity<?> fondBetweenPrice(@RequestParam Double min, @RequestParam Double max) {
+		try {
+			return ResponseEntity.ok().body(this.service.findBetweenprice(min, max));
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)

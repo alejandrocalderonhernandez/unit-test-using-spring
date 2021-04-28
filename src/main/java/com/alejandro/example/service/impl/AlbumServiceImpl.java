@@ -2,6 +2,7 @@ package com.alejandro.example.service.impl;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alejandro.example.entity.AlbumEntity;
+import com.alejandro.example.entity.RecordCompanyEntity;
 import com.alejandro.example.entity.TrackEntity;
 import com.alejandro.example.repository.AlbumRepository;
+import com.alejandro.example.repository.RecordCompanyRepository;
 import com.alejandro.example.repository.TrackRepository;
 import com.alejandro.example.service.IAlbumService;
 
@@ -20,11 +23,17 @@ public class AlbumServiceImpl implements IAlbumService {
 	
 	private AlbumRepository albumAepository;
 	private TrackRepository trackRepository;
+	private RecordCompanyRepository recordCompanyRepository;
 
 	@Autowired
-	public AlbumServiceImpl(AlbumRepository albumAepository, TrackRepository trackRepository) {
+	public AlbumServiceImpl(
+			AlbumRepository albumAepository, 
+			TrackRepository trackRepository,
+			RecordCompanyRepository recordCompanyRepository
+			) {
 		this.albumAepository = albumAepository;
 		this.trackRepository = trackRepository;
+		this.recordCompanyRepository = recordCompanyRepository;
 	}
 
 	@Override
@@ -39,6 +48,14 @@ public class AlbumServiceImpl implements IAlbumService {
 
 	@Override
 	public AlbumEntity save(AlbumEntity entity) {
+		if(entity.getRecordCompany() != null) {
+			System.out.println("not null");
+			Optional<RecordCompanyEntity> response = this.recordCompanyRepository.findById(entity.getRecordCompany().getTittle());
+			if(response.isPresent()) {
+				System.out.println(response.get());
+				entity.setRecordCompany(response.get());
+			}
+		}
 		return this.albumAepository.save(entity);
 	}
 
@@ -89,6 +106,15 @@ public class AlbumServiceImpl implements IAlbumService {
 		toUpdate.removeTrack(track);
 		this.albumAepository.save(toUpdate);
 		return toUpdate;
+	}
+
+	@Override
+	public Set<AlbumEntity> findBetweenprice(Double min, Double max) {
+		 Set<AlbumEntity> response = this.albumAepository.findByPriceBetween(min, max);
+		 if (response.size() == 0) {
+			 throw new NoSuchElementException("Not records");
+		 }
+		return response;
 	}
 
 }
