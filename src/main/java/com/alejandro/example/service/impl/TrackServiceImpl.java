@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,9 @@ import com.alejandro.example.service.ITrackService;
 @Transactional
 public class TrackServiceImpl implements ITrackService {
 	
+	
+	private static final Logger log = LoggerFactory.getLogger(TrackServiceImpl.class);
+
 	@Autowired
 	private TrackRepository repository;
 
@@ -28,6 +33,7 @@ public class TrackServiceImpl implements ITrackService {
 
 	@Override
 	public TrackEntity save(TrackEntity entity) {
+		log.info("save {}", entity.toString());
 		return this.repository.save(entity);
 	}
 

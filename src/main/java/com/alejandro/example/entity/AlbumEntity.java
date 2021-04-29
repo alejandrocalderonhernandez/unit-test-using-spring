@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.alejandro.example.util.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -112,10 +113,8 @@ public class AlbumEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AlbumEntity [albumId=" + albumId + ", name=" + name + ", autor=" + autor + ", price=" + price
-				+ ", recordCompany=" + recordCompany + ", tracks=" + tracks + "]";
+		return JsonUtil.toStringJson(this);
 	}
-
 
 	@Override
 	public int hashCode() {

@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alejandro.example.dto.AlbumDTO;
 import com.alejandro.example.entity.AlbumEntity;
 import com.alejandro.example.entity.TrackEntity;
 import com.alejandro.example.service.IAlbumService;
+import com.alejandro.example.util.JsonUtil;
 import com.alejandro.example.util.ResponseModel;
 
 @RestController
@@ -42,9 +44,10 @@ public class AlbumController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody AlbumEntity album) {;
+	public ResponseEntity<?> save(@RequestBody AlbumDTO album) {;
+		AlbumEntity toSave = (AlbumEntity) JsonUtil.bodyMapper(album, AlbumEntity.class);
 		return ResponseEntity.created(URI.create(
-				"v1/album/" + this.service.save(album).getAlbumId())).build();
+				"v1/album/" + this.service.save(toSave).getAlbumId())).build();
 	}
 	
 	@GetMapping("{id}")

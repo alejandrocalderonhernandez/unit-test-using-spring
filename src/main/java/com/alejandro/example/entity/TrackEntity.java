@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.alejandro.example.util.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -33,8 +34,6 @@ public class TrackEntity implements Serializable {
 		this.name = name;
 		this.lycris = lycris;
 	}
-
-
 
 	public Long getTrackId() {
 		return trackId;
@@ -70,7 +69,7 @@ public class TrackEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TrackEntity [trackId=" + trackId + ", name=" + name + ", lycris=" + lycris + "]";
+		return JsonUtil.toStringJson(this);
 	}
 
 	@Override

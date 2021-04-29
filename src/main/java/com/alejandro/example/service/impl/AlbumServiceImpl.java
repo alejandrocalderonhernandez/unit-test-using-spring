@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,9 @@ import com.alejandro.example.service.IAlbumService;
 @Transactional
 public class AlbumServiceImpl implements IAlbumService {
 	
+	
+	private static final Logger log = LoggerFactory.getLogger(AlbumServiceImpl.class);
+
 	private AlbumRepository albumAepository;
 	private TrackRepository trackRepository;
 	private RecordCompanyRepository recordCompanyRepository;
@@ -49,13 +54,13 @@ public class AlbumServiceImpl implements IAlbumService {
 	@Override
 	public AlbumEntity save(AlbumEntity entity) {
 		if(entity.getRecordCompany() != null) {
-			System.out.println("not null");
 			Optional<RecordCompanyEntity> response = this.recordCompanyRepository.findById(entity.getRecordCompany().getTittle());
 			if(response.isPresent()) {
 				System.out.println(response.get());
 				entity.setRecordCompany(response.get());
 			}
 		}
+		log.info("save {}", entity.toString());
 		return this.albumAepository.save(entity);
 	}
 

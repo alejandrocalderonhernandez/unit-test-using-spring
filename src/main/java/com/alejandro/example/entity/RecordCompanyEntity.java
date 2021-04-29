@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.alejandro.example.util.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -28,8 +29,6 @@ public class RecordCompanyEntity  implements Serializable {
 		super();
 		this.tittle = tittle;
 	}
-
-
 
 	public String getTittle() {
 		return tittle;
@@ -56,9 +55,8 @@ public class RecordCompanyEntity  implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "RecordCompanyEntity [tittle=" + tittle + "]";
+		return JsonUtil.toStringJson(this);
 	}
-
 
 	private static final long serialVersionUID = -8941398747644265559L;
 
