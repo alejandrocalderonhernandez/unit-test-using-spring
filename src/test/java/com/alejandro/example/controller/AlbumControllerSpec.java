@@ -30,7 +30,7 @@ public class AlbumControllerSpec {
 	MockMvc mockMvc;
 	
 	@MockBean
-	IAlbumService albumService;
+	IAlbumService albumServiceMock;
 	
 	ObjectMapper mapper;
 	
@@ -47,7 +47,7 @@ public class AlbumControllerSpec {
 	@DisplayName("call findById happy path")
 	void findByIdHP() throws Exception {
 		String endpoint = BASE_URL + "/" + DEFAULT_ID;
-		when(albumService.findById(DEFAULT_ID)).thenReturn(ALBUM);
+		when(albumServiceMock.findById(DEFAULT_ID)).thenReturn(ALBUM);
 		mockMvc.perform(get(endpoint).contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -58,7 +58,7 @@ public class AlbumControllerSpec {
 	@DisplayName("call findById unhappy path")
 	void findByIdUP() throws Exception {
 		String endpoint = BASE_URL + "/" + INVALID_ID;
-		when(albumService.findById(INVALID_ID)).thenThrow(NoSuchElementException.class);
+		when(albumServiceMock.findById(INVALID_ID)).thenThrow(NoSuchElementException.class);
 		mockMvc.perform(get(endpoint).contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isNotFound());
 	}
@@ -68,7 +68,7 @@ public class AlbumControllerSpec {
 	void saveHP() throws Exception {
 		String endpoint = BASE_URL;
 		AlbumEntity toCreate = ALBUM;
-		when(albumService.save(any(AlbumEntity.class))).thenReturn(ALBUM);
+		when(albumServiceMock.save(any(AlbumEntity.class))).thenReturn(ALBUM);
 		mockMvc
 			.perform(post(endpoint)
 			.contentType(MediaType.APPLICATION_JSON)

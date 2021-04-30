@@ -3,10 +3,7 @@ package com.alejandro.example.dto;
 import java.io.Serializable;
 import java.util.Set;
 
-import com.alejandro.example.entity.AlbumEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AlbumDTO implements Serializable {
 
@@ -17,7 +14,7 @@ public class AlbumDTO implements Serializable {
 	@JsonIgnoreProperties(value = "albums", allowSetters = true)
 	private RecordCompanyDTO recordCompany;
 	@JsonIgnoreProperties(value = "album", allowSetters = true)
-	private Set<AlbumDTO> tracks;
+	private Set<TrackDTO> tracks;
 	
 	public AlbumDTO() {}
 
@@ -61,24 +58,14 @@ public class AlbumDTO implements Serializable {
 		this.recordCompany = recordCompany;
 	}
 
-	public Set<AlbumDTO> getTracks() {
+	public Set<TrackDTO> getTracks() {
 		return tracks;
 	}
 
-	public void setTracks(Set<AlbumDTO> tracks) {
+	public void setTracks(Set<TrackDTO> tracks) {
 		this.tracks = tracks;
 	}
-	
-	public AlbumEntity toEntity() {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			System.out.println(mapper.writeValueAsString(this));
-			return mapper.readValue(mapper.writeValueAsString(this), AlbumEntity.class);
-		} catch (JsonProcessingException e) {
-			System.err.println(e.getMessage());
-			throw new RuntimeException("Error to parse json");
-		}
-	}
+
 	private static final long serialVersionUID = 11221L;
 
 }

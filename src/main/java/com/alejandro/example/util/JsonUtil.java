@@ -1,5 +1,6 @@
 package com.alejandro.example.util;
 
+import com.alejandro.example.util.excepcion.IllegalBodyException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,7 +24,7 @@ public class JsonUtil {
 			return mapper.readValue(json, typeReturn);
 		} catch (JsonProcessingException e) {
 			System.err.println(e.getMessage());
-			throw new RuntimeException("Error to parse json");
+			throw new IllegalBodyException("Error to parse Body");
 		}
 	}
 

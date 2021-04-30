@@ -24,6 +24,7 @@ import com.alejandro.example.entity.TrackEntity;
 import com.alejandro.example.service.IAlbumService;
 import com.alejandro.example.util.JsonUtil;
 import com.alejandro.example.util.ResponseModel;
+import com.alejandro.example.util.excepcion.IllegalBodyException;
 
 @RestController
 @RequestMapping(path = "v1/album")
@@ -45,15 +46,23 @@ public class AlbumController {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody AlbumDTO album) {;
-		AlbumEntity toSave = (AlbumEntity) JsonUtil.bodyMapper(album, AlbumEntity.class);
-		return ResponseEntity.created(URI.create(
-				"v1/album/" + this.service.save(toSave).getAlbumId())).build();
+		try {
+			AlbumEntity toSave = (AlbumEntity) JsonUtil.bodyMapper(album, AlbumEntity.class);
+			return ResponseEntity.created(URI.create(
+					"v1/album/" + this.service.save(toSave).getAlbumId())).build();
+		} catch (IllegalBodyException e) {
+			return new ResponseEntity<ResponseModel>(
+					new ResponseModel(LocalDateTime.now(), null, e.getMessage()),
+					HttpStatus.INTERNAL_SERVER_ERROR );
+		}
+
 	}
 	
 	@GetMapping("{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
 		try {
-			return ResponseEntity.ok().body(this.service.findById(id));
+			AlbumDTO toResponse = (AlbumDTO) JsonUtil.bodyMapper(this.service.findById(id), AlbumDTO.class);
+			return ResponseEntity.ok().body(toResponse);
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)
@@ -73,8 +82,7 @@ public class AlbumController {
 		}
 	}
 	
-	
-	@PutMapping("{id}")
+		@PutMapping("{id}")
 	public  ResponseEntity<?> update(@RequestBody AlbumEntity entity, @PathVariable Long id) {
 		try {
 			return ResponseEntity.ok().body(this.service.update(entity, id));
