@@ -16,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.alejandro.example.entity.AlbumEntity;
 import com.alejandro.example.repository.AlbumRepository;
+import com.alejandro.example.repository.RecordCompanyRepository;
 import com.alejandro.example.repository.TrackRepository;
 
 @SpringBootTest
@@ -25,7 +26,8 @@ public class AlbumServiceSpec {
 	AlbumRepository albumRepository;
 	@MockBean
 	TrackRepository trackRepository;
-	
+	@MockBean
+	RecordCompanyRepository recordCompanyRepository;
 	@Autowired
 	IAlbumService service;
 	
@@ -49,5 +51,34 @@ public class AlbumServiceSpec {
 			this.service.findById(INVALID_ID);
 		});
 	}
+	
+	@Test
+	@DisplayName("call save method happy path")
+	void saveHP() {
+		String recordCompanyId = ALBUM.getRecordCompany().getTittle();
+		AlbumEntity toSave = ALBUM;
+		when(recordCompanyRepository.findById(recordCompanyId)).thenReturn(Optional.of(RECORD_COMPANY));
+		when(albumRepository.save(toSave)).thenReturn(ALBUM);
+		AlbumEntity result = this.service.save(toSave);
+		verify(recordCompanyRepository).findById(recordCompanyId);
+		assertEquals(result, ALBUM);
+	}
+	
+	@Test
+	@DisplayName("call delete method unhappy path")
+	void deleteHP() {
+		doNothing().when(albumRepository).delete(ALBUM);
+		when(albumRepository.findById(DEFAULT_ID)).thenReturn(Optional.of(ALBUM));
+		service.delete(DEFAULT_ID);
+		verify(albumRepository).delete(ALBUM);
+	}
+	
 
+	@Test
+	@DisplayName("call delete method unhappy path")
+	void deleteUP() {
+		doNothing().when(albumRepository).delete(ALBUM);
+		when(albumRepository.findById(DEFAULT_ID)).thenReturn(Optional.empty());
+		assertThrows(NoSuchElementException.class, () -> service.delete(DEFAULT_ID));
+	}
 }

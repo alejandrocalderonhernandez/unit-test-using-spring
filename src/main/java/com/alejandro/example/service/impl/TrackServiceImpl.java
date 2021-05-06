@@ -39,8 +39,7 @@ public class TrackServiceImpl implements ITrackService {
 
 	@Override
 	public TrackEntity findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.repository.findById(id).get();
 	}
 
 	@Override
