@@ -652,3 +652,675 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 2021-05-06 16:43:35.348 DEBUG 10802 --- [SpringContextShutdownHook] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
 2021-05-06 16:43:35.353  INFO 10802 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-05-06 16:43:35.355  INFO 10802 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 16:58:44.693  INFO 11929 --- [main] c.a.example.SpringTestApplication        : Starting SpringTestApplication using Java 15.0.1 on alejandroLaptop with PID 11929 (/home/alejandro/Documents/Projects/spring/spring-test/target/classes started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 16:58:44.696  INFO 11929 --- [main] c.a.example.SpringTestApplication        : No active profile set, falling back to default profiles: default
+2021-05-06 16:58:45.951  INFO 11929 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-06 16:58:45.997  INFO 11929 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 3 JPA repository interfaces.
+2021-05-06 16:58:46.632  INFO 11929 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-06 16:58:46.643  INFO 11929 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 16:58:46.644  INFO 11929 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-06 16:58:46.776  INFO 11929 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-06 16:58:46.782  INFO 11929 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2035 ms
+2021-05-06 16:58:46.883  INFO 11929 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-06 16:58:47.085  INFO 11929 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-06 16:58:47.091  INFO 11929 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:aop'
+2021-05-06 16:58:47.241  INFO 11929 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-06 16:58:47.280  INFO 11929 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-05-06 16:58:47.404  INFO 11929 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-06 16:58:47.494  INFO 11929 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-06 16:58:48.048 DEBUG 11929 --- [main] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 16:58:48.050 DEBUG 11929 --- [main] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 16:58:48.050 DEBUG 11929 --- [main] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 16:58:48.050 DEBUG 11929 --- [main] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 16:58:48.053 DEBUG 11929 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2021-05-06 16:58:48.055 DEBUG 11929 --- [main] org.hibernate.SQL                        : create table album (album_id bigint not null, autor varchar(255), name varchar(255), price double, tittle varchar(255), primary key (album_id))
+2021-05-06 16:58:48.061 DEBUG 11929 --- [main] org.hibernate.SQL                        : create table record_company (tittle varchar(255) not null, primary key (tittle))
+2021-05-06 16:58:48.065 DEBUG 11929 --- [main] org.hibernate.SQL                        : create table track (track_id bigint not null, lycris varchar(255), name varchar(255), album_id bigint, primary key (track_id))
+2021-05-06 16:58:48.066 DEBUG 11929 --- [main] org.hibernate.SQL                        : alter table album add constraint FKddgdueegcg2b78wdyro38xntk foreign key (tittle) references record_company
+2021-05-06 16:58:48.073 DEBUG 11929 --- [main] org.hibernate.SQL                        : alter table track add constraint FKaxm9pbgk7ptorfyk3o6911q05 foreign key (album_id) references album
+2021-05-06 16:58:48.077  INFO 11929 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-06 16:58:48.085  INFO 11929 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 16:58:48.689  WARN 11929 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-06 16:58:48.898  INFO 11929 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 16:58:49.149  INFO 11929 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-06 16:58:49.527  INFO 11929 --- [main] c.a.example.SpringTestApplication        : Started SpringTestApplication in 5.294 seconds (JVM running for 6.357)
+2021-05-06 16:59:04.088  INFO 11929 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 16:59:04.089  INFO 11929 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 16:59:04.090  INFO 11929 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 16:59:04.179 DEBUG 11929 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_, albumentit0_.autor as autor2_0_, albumentit0_.name as name3_0_, albumentit0_.price as price4_0_, albumentit0_.tittle as tittle5_0_ from album albumentit0_
+2021-05-06 16:59:04.188 DEBUG 11929 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 16:59:04.191 TRACE 11929 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Metal records]
+2021-05-06 16:59:04.226 DEBUG 11929 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 16:59:04.227 TRACE 11929 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [100]
+2021-05-06 16:59:04.251 DEBUG 11929 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 16:59:04.251 TRACE 11929 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [200]
+2021-05-06 16:59:04.259 DEBUG 11929 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_, albumentit0_.autor as autor2_0_, albumentit0_.name as name3_0_, albumentit0_.price as price4_0_, albumentit0_.tittle as tittle5_0_ from album albumentit0_
+2021-05-06 16:59:30.776  INFO 11929 --- [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-05-06 16:59:30.796  INFO 11929 --- [RMI TCP Connection(9)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 16:59:30.802  INFO 11929 --- [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 16:59:30.803  INFO 11929 --- [RMI TCP Connection(9)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-06 16:59:30.803 DEBUG 11929 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 16:59:30.812  WARN 11929 --- [RMI TCP Connection(9)-127.0.0.1] o.h.t.s.i.e.GenerationTargetToDatabase   : HHH000335: Unable to log SQLWarnings : org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:170) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1514) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:1211) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:1185) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcStatement.getWarnings(JdbcStatement.java:349) ~[h2-1.4.200.jar:1.4.200]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.getWarnings(HikariProxyStatement.java) ~[HikariCP-3.4.5.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:57) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl.perform(SchemaDropperImpl.java:542) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.internal.SessionFactoryImpl.close(SessionFactoryImpl.java:813) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.invokeProxyMethod(AbstractEntityManagerFactoryBean.java:519) ~[spring-orm-5.3.5.jar:5.3.5]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean$ManagedEntityManagerFactoryInvocationHandler.invoke(AbstractEntityManagerFactoryBean.java:734) ~[spring-orm-5.3.5.jar:5.3.5]
+	at com.sun.proxy.$Proxy84.close(Unknown Source) ~[na:na]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy(AbstractEntityManagerFactoryBean.java:653) ~[spring-orm-5.3.5.jar:5.3.5]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:200) ~[spring-beans-5.3.5.jar:5.3.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587) ~[spring-beans-5.3.5.jar:5.3.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559) ~[spring-beans-5.3.5.jar:5.3.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1152) ~[spring-beans-5.3.5.jar:5.3.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520) ~[spring-beans-5.3.5.jar:5.3.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1145) ~[spring-beans-5.3.5.jar:5.3.5]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1106) ~[spring-context-5.3.5.jar:5.3.5]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1075) ~[spring-context-5.3.5.jar:5.3.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:171) ~[spring-boot-2.4.4.jar:2.4.4]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1021) ~[spring-context-5.3.5.jar:5.3.5]
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin.shutdown(SpringApplicationAdminMXBeanRegistrar.java:160) ~[spring-boot-2.4.4.jar:2.4.4]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71) ~[na:na]
+	at jdk.internal.reflect.GeneratedMethodAccessor70.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at java.base/sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:260) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:193) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:175) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:117) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:54) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:237) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:138) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:252) ~[na:na]
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1399) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827) ~[na:na]
+	at java.base/jdk.internal.reflect.GeneratedMethodAccessor72.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:691) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:391) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-05-06 16:59:30.813 DEBUG 11929 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 16:59:30.813 ERROR 11929 --- [RMI TCP Connection(9)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop table if exists record_company CASCADE 
+2021-05-06 16:59:30.814 DEBUG 11929 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 16:59:30.814 ERROR 11929 --- [RMI TCP Connection(9)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop table if exists track CASCADE 
+2021-05-06 16:59:30.814 DEBUG 11929 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 16:59:30.814 ERROR 11929 --- [RMI TCP Connection(9)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop sequence if exists hibernate_sequence
+2021-05-06 16:59:30.814  WARN 11929 --- [RMI TCP Connection(9)-127.0.0.1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
+2021-05-06 16:59:30.814 ERROR 11929 --- [RMI TCP Connection(9)-127.0.0.1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2021-05-06 16:59:30.815  WARN 11929 --- [RMI TCP Connection(9)-127.0.0.1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'entityManagerFactory': org.hibernate.exception.JDBCConnectionException: Unable to release JDBC Connection used for DDL execution
+2021-05-06 16:59:30.816  INFO 11929 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-05-06 16:59:30.818  INFO 11929 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 16:59:32.943  INFO 12130 --- [main] c.a.example.SpringTestApplication        : Starting SpringTestApplication using Java 15.0.1 on alejandroLaptop with PID 12130 (/home/alejandro/Documents/Projects/spring/spring-test/target/classes started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 16:59:32.946  INFO 12130 --- [main] c.a.example.SpringTestApplication        : No active profile set, falling back to default profiles: default
+2021-05-06 16:59:33.651  INFO 12130 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-06 16:59:33.689  INFO 12130 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
+2021-05-06 16:59:34.167  INFO 12130 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-06 16:59:34.178  INFO 12130 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 16:59:34.179  INFO 12130 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-06 16:59:34.245  INFO 12130 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-06 16:59:34.246  INFO 12130 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1242 ms
+2021-05-06 16:59:34.292  INFO 12130 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-06 16:59:34.401  INFO 12130 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-06 16:59:34.406  INFO 12130 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:aop'
+2021-05-06 16:59:34.503  INFO 12130 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-06 16:59:34.528  INFO 12130 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-05-06 16:59:34.603  INFO 12130 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-06 16:59:34.667  INFO 12130 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-06 16:59:35.029 DEBUG 12130 --- [main] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 16:59:35.030 DEBUG 12130 --- [main] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 16:59:35.030 DEBUG 12130 --- [main] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 16:59:35.030 DEBUG 12130 --- [main] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 16:59:35.032 DEBUG 12130 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2021-05-06 16:59:35.033 DEBUG 12130 --- [main] org.hibernate.SQL                        : create table album (album_id bigint not null, autor varchar(255), name varchar(255), price double, tittle varchar(255), primary key (album_id))
+2021-05-06 16:59:35.036 DEBUG 12130 --- [main] org.hibernate.SQL                        : create table record_company (tittle varchar(255) not null, primary key (tittle))
+2021-05-06 16:59:35.038 DEBUG 12130 --- [main] org.hibernate.SQL                        : create table track (track_id bigint not null, lycris varchar(255), name varchar(255), album_id bigint, primary key (track_id))
+2021-05-06 16:59:35.039 DEBUG 12130 --- [main] org.hibernate.SQL                        : alter table album add constraint FKddgdueegcg2b78wdyro38xntk foreign key (tittle) references record_company
+2021-05-06 16:59:35.043 DEBUG 12130 --- [main] org.hibernate.SQL                        : alter table track add constraint FKaxm9pbgk7ptorfyk3o6911q05 foreign key (album_id) references album
+2021-05-06 16:59:35.045  INFO 12130 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-06 16:59:35.050  INFO 12130 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 16:59:35.452  WARN 12130 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-06 16:59:35.590  INFO 12130 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 16:59:35.726  INFO 12130 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-06 16:59:35.986  INFO 12130 --- [main] c.a.example.SpringTestApplication        : Started SpringTestApplication in 3.365 seconds (JVM running for 4.068)
+2021-05-06 16:59:39.669  INFO 12130 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 16:59:39.669  INFO 12130 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 16:59:39.671  INFO 12130 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 16:59:39.810 DEBUG 12130 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_, albumentit0_.autor as autor2_0_, albumentit0_.name as name3_0_, albumentit0_.price as price4_0_, albumentit0_.tittle as tittle5_0_ from album albumentit0_
+2021-05-06 16:59:39.823 DEBUG 12130 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 16:59:39.826 TRACE 12130 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Metal records]
+2021-05-06 16:59:39.878 DEBUG 12130 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 16:59:39.879 TRACE 12130 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [100]
+2021-05-06 16:59:39.916 DEBUG 12130 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 16:59:39.917 TRACE 12130 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [200]
+2021-05-06 16:59:49.851  INFO 12130 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-05-06 16:59:49.871  INFO 12130 --- [RMI TCP Connection(7)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 16:59:49.877  INFO 12130 --- [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 16:59:49.877  INFO 12130 --- [RMI TCP Connection(7)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-06 16:59:49.878 DEBUG 12130 --- [RMI TCP Connection(7)-127.0.0.1] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 16:59:49.889 ERROR 12130 --- [RMI TCP Connection(7)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop table if exists album CASCADE 
+2021-05-06 16:59:49.889 DEBUG 12130 --- [RMI TCP Connection(7)-127.0.0.1] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 16:59:49.889 ERROR 12130 --- [RMI TCP Connection(7)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop table if exists record_company CASCADE 
+2021-05-06 16:59:49.890 DEBUG 12130 --- [RMI TCP Connection(7)-127.0.0.1] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 16:59:49.890 ERROR 12130 --- [RMI TCP Connection(7)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop table if exists track CASCADE 
+2021-05-06 16:59:49.890 DEBUG 12130 --- [RMI TCP Connection(7)-127.0.0.1] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 16:59:49.890 ERROR 12130 --- [RMI TCP Connection(7)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: drop sequence if exists hibernate_sequence
+2021-05-06 16:59:49.890  WARN 12130 --- [RMI TCP Connection(7)-127.0.0.1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
+2021-05-06 16:59:49.891 ERROR 12130 --- [RMI TCP Connection(7)-127.0.0.1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2021-05-06 16:59:49.891  WARN 12130 --- [RMI TCP Connection(7)-127.0.0.1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'entityManagerFactory': org.hibernate.exception.JDBCConnectionException: Unable to release JDBC Connection used for DDL execution
+2021-05-06 16:59:49.894  INFO 12130 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-05-06 16:59:49.898  INFO 12130 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 17:01:05.061  INFO 12275 --- [main] c.a.example.SpringTestApplication        : Starting SpringTestApplication using Java 15.0.1 on alejandroLaptop with PID 12275 (/home/alejandro/Documents/Projects/spring/spring-test/target/classes started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 17:01:05.064  INFO 12275 --- [main] c.a.example.SpringTestApplication        : No active profile set, falling back to default profiles: default
+2021-05-06 17:01:05.825  INFO 12275 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-06 17:01:05.869  INFO 12275 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 3 JPA repository interfaces.
+2021-05-06 17:01:06.358  INFO 12275 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-06 17:01:06.370  INFO 12275 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 17:01:06.370  INFO 12275 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-06 17:01:06.476  INFO 12275 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-06 17:01:06.477  INFO 12275 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1342 ms
+2021-05-06 17:01:06.528  INFO 12275 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-06 17:01:06.666  INFO 12275 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-06 17:01:06.674  INFO 12275 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:aop'
+2021-05-06 17:01:06.975  INFO 12275 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-06 17:01:07.017  INFO 12275 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-05-06 17:01:07.118  INFO 12275 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-06 17:01:07.297  INFO 12275 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-06 17:01:07.740 DEBUG 12275 --- [main] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:01:07.741 DEBUG 12275 --- [main] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:01:07.741 DEBUG 12275 --- [main] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:01:07.741 DEBUG 12275 --- [main] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:01:07.743 DEBUG 12275 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2021-05-06 17:01:07.744 DEBUG 12275 --- [main] org.hibernate.SQL                        : create table album (album_id bigint not null, autor varchar(255), name varchar(255), price double, tittle varchar(255), primary key (album_id))
+2021-05-06 17:01:07.747 DEBUG 12275 --- [main] org.hibernate.SQL                        : create table record_company (tittle varchar(255) not null, primary key (tittle))
+2021-05-06 17:01:07.750 DEBUG 12275 --- [main] org.hibernate.SQL                        : create table track (track_id bigint not null, lycris varchar(255), name varchar(255), album_id bigint, primary key (track_id))
+2021-05-06 17:01:07.751 DEBUG 12275 --- [main] org.hibernate.SQL                        : alter table album add constraint FKddgdueegcg2b78wdyro38xntk foreign key (tittle) references record_company
+2021-05-06 17:01:07.755 DEBUG 12275 --- [main] org.hibernate.SQL                        : alter table track add constraint FKaxm9pbgk7ptorfyk3o6911q05 foreign key (album_id) references album
+2021-05-06 17:01:07.758  INFO 12275 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-06 17:01:07.763  INFO 12275 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:01:08.204  WARN 12275 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-06 17:01:08.376  INFO 12275 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:01:08.521  INFO 12275 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-06 17:01:08.893  INFO 12275 --- [main] c.a.example.SpringTestApplication        : Started SpringTestApplication in 4.222 seconds (JVM running for 4.934)
+2021-05-06 17:01:22.947  INFO 12275 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 17:01:22.948  INFO 12275 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 17:01:22.949  INFO 12275 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 17:01:23.047 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 17:01:23.066 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:01:23.075  INFO 12275 --- [http-nio-8080-exec-2] c.a.e.service.impl.AlbumServiceImpl      : save {"albumId":null,"name":"Kings of leon","autor":"Kings of leon","price":111.0,"recordCompany":{"tittle":"rise records"},"tracks":[{"trackId":null,"name":"Use somebody","lycris":"some lycris"},{"trackId":null,"name":"Find me","lycris":"some lycris"},{"trackId":null,"name":"Sex on fire","lycris":"some lycris"}]}
+2021-05-06 17:01:23.081 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:01:23.095 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:01:23.095 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:01:23.096 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:01:23.102 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into record_company (tittle) values (?)
+2021-05-06 17:01:23.102 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:01:23.103 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into album (autor, name, price, tittle, album_id) values (?, ?, ?, ?, ?)
+2021-05-06 17:01:23.104 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:01:23.104 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:01:23.104 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [DOUBLE] - [111.0]
+2021-05-06 17:01:23.105 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [rise records]
+2021-05-06 17:01:23.105 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2021-05-06 17:01:23.106 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:01:23.106 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:01:23.106 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:01:23.106 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Use somebody]
+2021-05-06 17:01:23.107 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [2]
+2021-05-06 17:01:23.107 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:01:23.107 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:01:23.107 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:01:23.107 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Find me]
+2021-05-06 17:01:23.107 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [3]
+2021-05-06 17:01:23.107 DEBUG 12275 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:01:23.108 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:01:23.108 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:01:23.108 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Sex on fire]
+2021-05-06 17:01:23.108 TRACE 12275 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [4]
+2021-05-06 17:01:59.222 DEBUG 12275 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_, albumentit0_.autor as autor2_0_, albumentit0_.name as name3_0_, albumentit0_.price as price4_0_, albumentit0_.tittle as tittle5_0_ from album albumentit0_
+2021-05-06 17:01:59.229 DEBUG 12275 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 17:01:59.229 TRACE 12275 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:01:59.232 DEBUG 12275 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 17:01:59.232 TRACE 12275 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Metal records]
+2021-05-06 17:01:59.241 DEBUG 12275 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:01:59.242 TRACE 12275 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:01:59.253 DEBUG 12275 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:01:59.254 TRACE 12275 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [100]
+2021-05-06 17:01:59.263 DEBUG 12275 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:01:59.263 TRACE 12275 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [200]
+2021-05-06 17:02:06.465 DEBUG 12275 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:02:06.475 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:06.485 DEBUG 12275 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : update album set autor=?, name=?, price=?, tittle=? where album_id=?
+2021-05-06 17:02:06.486 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [KINGS OF LEON]
+2021-05-06 17:02:06.486 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:02:06.486 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [DOUBLE] - [110.0]
+2021-05-06 17:02:06.487 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [rise records]
+2021-05-06 17:02:06.487 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2021-05-06 17:02:06.494 DEBUG 12275 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:02:06.495 TRACE 12275 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:22.859 DEBUG 12275 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:02:22.860 TRACE 12275 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:22.864 DEBUG 12275 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:02:22.865 TRACE 12275 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:29.489 DEBUG 12275 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:02:29.489 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:29.491 DEBUG 12275 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : update album set autor=?, name=?, price=?, tittle=? where album_id=?
+2021-05-06 17:02:29.491 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [KINGS OF LEON]
+2021-05-06 17:02:29.491 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:02:29.491 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [DOUBLE] - [210.0]
+2021-05-06 17:02:29.492 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [rise records]
+2021-05-06 17:02:29.492 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2021-05-06 17:02:29.495 DEBUG 12275 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:02:29.496 TRACE 12275 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:31.736 DEBUG 12275 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:02:31.736 TRACE 12275 --- [http-nio-8080-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:31.742 DEBUG 12275 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:02:31.742 TRACE 12275 --- [http-nio-8080-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:02:33.933  INFO 12275 --- [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-05-06 17:02:33.956  INFO 12275 --- [RMI TCP Connection(9)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:02:33.961  INFO 12275 --- [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:02:33.962  INFO 12275 --- [RMI TCP Connection(9)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-06 17:02:33.962 DEBUG 12275 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:02:33.967 DEBUG 12275 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:02:33.968 DEBUG 12275 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:02:33.968 DEBUG 12275 --- [RMI TCP Connection(9)-127.0.0.1] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:02:33.971  INFO 12275 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-05-06 17:02:33.973  INFO 12275 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 17:11:16.642  INFO 12661 --- [main] c.a.example.SpringTestApplication        : Starting SpringTestApplication using Java 15.0.1 on alejandroLaptop with PID 12661 (/home/alejandro/Documents/Projects/spring/spring-test/target/classes started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 17:11:16.645  INFO 12661 --- [main] c.a.example.SpringTestApplication        : No active profile set, falling back to default profiles: default
+2021-05-06 17:11:17.322  INFO 12661 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-06 17:11:17.362  INFO 12661 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2021-05-06 17:11:17.724  INFO 12661 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-06 17:11:17.732  INFO 12661 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 17:11:17.732  INFO 12661 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-06 17:11:17.803  INFO 12661 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-06 17:11:17.804  INFO 12661 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1099 ms
+2021-05-06 17:11:17.841  INFO 12661 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-06 17:11:17.939  INFO 12661 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-06 17:11:17.944  INFO 12661 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:aop'
+2021-05-06 17:11:18.041  INFO 12661 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-06 17:11:18.074  INFO 12661 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-05-06 17:11:18.170  INFO 12661 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-06 17:11:18.240  INFO 12661 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-06 17:11:18.668 DEBUG 12661 --- [main] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:11:18.669 DEBUG 12661 --- [main] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:11:18.669 DEBUG 12661 --- [main] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:11:18.670 DEBUG 12661 --- [main] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:11:18.671 DEBUG 12661 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2021-05-06 17:11:18.673 DEBUG 12661 --- [main] org.hibernate.SQL                        : create table album (album_id bigint not null, autor varchar(255), name varchar(255), price double, tittle varchar(255), primary key (album_id))
+2021-05-06 17:11:18.676 DEBUG 12661 --- [main] org.hibernate.SQL                        : create table record_company (tittle varchar(255) not null, primary key (tittle))
+2021-05-06 17:11:18.678 DEBUG 12661 --- [main] org.hibernate.SQL                        : create table track (track_id bigint not null, lycris varchar(255), name varchar(255), album_id bigint, primary key (track_id))
+2021-05-06 17:11:18.679 DEBUG 12661 --- [main] org.hibernate.SQL                        : alter table album add constraint FKddgdueegcg2b78wdyro38xntk foreign key (tittle) references record_company
+2021-05-06 17:11:18.684 DEBUG 12661 --- [main] org.hibernate.SQL                        : alter table track add constraint FKaxm9pbgk7ptorfyk3o6911q05 foreign key (album_id) references album
+2021-05-06 17:11:18.688  INFO 12661 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-06 17:11:18.693  INFO 12661 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:11:19.133  WARN 12661 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-06 17:11:19.270  INFO 12661 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:11:19.386  INFO 12661 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-06 17:11:19.637  INFO 12661 --- [main] c.a.example.SpringTestApplication        : Started SpringTestApplication in 3.305 seconds (JVM running for 3.919)
+2021-05-06 17:11:50.997  INFO 12661 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 17:11:50.998  INFO 12661 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 17:11:50.999  INFO 12661 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 17:11:51.100  INFO 12661 --- [http-nio-8080-exec-2] c.a.e.service.impl.TrackServiceImpl      : save {"trackId":null,"name":"Waste a moment","lycris":"some lycris","album":{"albumId":1,"name":"Kings of leon","autor":"Kings of leon","price":100.0,"recordCompany":{"tittle":"rise records"}}}
+2021-05-06 17:11:51.113 DEBUG 12661 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:11:51.137 DEBUG 12661 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:11:51.139 TRACE 12661 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:11:51.139 TRACE 12661 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:11:51.139 TRACE 12661 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Waste a moment]
+2021-05-06 17:11:51.139 TRACE 12661 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2021-05-06 17:11:51.141  WARN 12661 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23506, SQLState: 23506
+2021-05-06 17:11:51.141 ERROR 12661 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Referential integrity constraint violation: "FKAXM9PBGK7PTORFYK3O6911Q05: PUBLIC.TRACK FOREIGN KEY(ALBUM_ID) REFERENCES PUBLIC.ALBUM(ALBUM_ID) (1)"; SQL statement:
+insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?) [23506-200]
+2021-05-06 17:11:51.150 ERROR 12661 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [FKAXM9PBGK7PTORFYK3O6911Q05]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
+
+org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Referential integrity constraint violation: "FKAXM9PBGK7PTORFYK3O6911Q05: PUBLIC.TRACK FOREIGN KEY(ALBUM_ID) REFERENCES PUBLIC.ALBUM(ALBUM_ID) (1)"; SQL statement:
+insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?) [23506-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:459) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.constraint.ConstraintReferential.checkRowOwnTable(ConstraintReferential.java:319) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.constraint.ConstraintReferential.checkRow(ConstraintReferential.java:261) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.table.Table.fireConstraints(Table.java:1057) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.table.Table.fireAfterRow(Table.java:1075) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:211) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.dml.Insert.update(Insert.java:151) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeUpdate(Command.java:251) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152) ~[h2-1.4.200.jar:1.4.200]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.5.jar:na]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3297) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3824) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:107) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.engine.spi.ActionQueue.lambda$executeActions$1(ActionQueue.java:478) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:723) ~[na:na]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:475) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:345) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:40) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:93) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1362) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:453) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3212) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2380) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:447) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:183) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:40) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:281) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101) ~[hibernate-core-5.4.29.Final.jar:5.4.29.Final]
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:562) ~[spring-orm-5.3.5.jar:5.3.5]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743) ~[spring-tx-5.3.5.jar:5.3.5]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.5.jar:5.3.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.5.jar:5.3.5]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.5.jar:5.3.5]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.5.jar:5.3.5]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.5.jar:5.3.5]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.5.jar:5.3.5]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692) ~[spring-aop-5.3.5.jar:5.3.5]
+	at com.alejandro.example.service.impl.TrackServiceImpl$$EnhancerBySpringCGLIB$$55200d33.save(<generated>) ~[classes/:na]
+	at com.alejandro.example.controller.TrackController.save(TrackController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.44.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.5.jar:5.3.5]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.44.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.5.jar:5.3.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.44.jar:9.0.44]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-05-06 17:12:15.590 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 17:12:15.591 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:12:15.597  INFO 12661 --- [http-nio-8080-exec-3] c.a.e.service.impl.AlbumServiceImpl      : save {"albumId":null,"name":"Kings of leon","autor":"Kings of leon","price":111.0,"recordCompany":{"tittle":"rise records"},"tracks":[{"trackId":null,"name":"Use somebody","lycris":"some lycris"},{"trackId":null,"name":"Find me","lycris":"some lycris"},{"trackId":null,"name":"Sex on fire","lycris":"some lycris"}]}
+2021-05-06 17:12:15.599 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:15.607 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:15.607 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:15.607 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:15.610 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into record_company (tittle) values (?)
+2021-05-06 17:12:15.610 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:12:15.611 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into album (autor, name, price, tittle, album_id) values (?, ?, ?, ?, ?)
+2021-05-06 17:12:15.612 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:12:15.612 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:12:15.613 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [DOUBLE] - [111.0]
+2021-05-06 17:12:15.613 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [rise records]
+2021-05-06 17:12:15.613 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [2]
+2021-05-06 17:12:15.613 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:12:15.614 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-05-06 17:12:15.614 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:12:15.614 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Use somebody]
+2021-05-06 17:12:15.614 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [3]
+2021-05-06 17:12:15.615 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:12:15.615 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-05-06 17:12:15.615 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:12:15.615 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Find me]
+2021-05-06 17:12:15.615 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [4]
+2021-05-06 17:12:15.616 DEBUG 12661 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:12:15.616 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-05-06 17:12:15.616 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:12:15.616 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Sex on fire]
+2021-05-06 17:12:15.616 TRACE 12661 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [5]
+2021-05-06 17:12:20.622 DEBUG 12661 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:12:20.624 TRACE 12661 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:12:27.602  INFO 12661 --- [RMI TCP Connection(8)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-05-06 17:12:27.619  INFO 12661 --- [RMI TCP Connection(8)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:12:27.625  INFO 12661 --- [RMI TCP Connection(8)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:12:27.625  INFO 12661 --- [RMI TCP Connection(8)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-06 17:12:27.626 DEBUG 12661 --- [RMI TCP Connection(8)-127.0.0.1] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:12:27.631 DEBUG 12661 --- [RMI TCP Connection(8)-127.0.0.1] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:12:27.632 DEBUG 12661 --- [RMI TCP Connection(8)-127.0.0.1] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:12:27.633 DEBUG 12661 --- [RMI TCP Connection(8)-127.0.0.1] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:12:27.636  INFO 12661 --- [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-05-06 17:12:27.639  INFO 12661 --- [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 17:12:29.984  INFO 12761 --- [main] c.a.example.SpringTestApplication        : Starting SpringTestApplication using Java 15.0.1 on alejandroLaptop with PID 12761 (/home/alejandro/Documents/Projects/spring/spring-test/target/classes started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 17:12:29.986  INFO 12761 --- [main] c.a.example.SpringTestApplication        : No active profile set, falling back to default profiles: default
+2021-05-06 17:12:30.614  INFO 12761 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-06 17:12:30.651  INFO 12761 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 3 JPA repository interfaces.
+2021-05-06 17:12:31.010  INFO 12761 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-06 17:12:31.017  INFO 12761 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 17:12:31.017  INFO 12761 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-06 17:12:31.085  INFO 12761 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-06 17:12:31.085  INFO 12761 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1054 ms
+2021-05-06 17:12:31.122  INFO 12761 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-06 17:12:31.229  INFO 12761 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-06 17:12:31.234  INFO 12761 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:aop'
+2021-05-06 17:12:31.329  INFO 12761 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-06 17:12:31.360  INFO 12761 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-05-06 17:12:31.427  INFO 12761 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-06 17:12:31.492  INFO 12761 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-06 17:12:31.893 DEBUG 12761 --- [main] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:12:31.894 DEBUG 12761 --- [main] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:12:31.894 DEBUG 12761 --- [main] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:12:31.895 DEBUG 12761 --- [main] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:12:31.896 DEBUG 12761 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2021-05-06 17:12:31.898 DEBUG 12761 --- [main] org.hibernate.SQL                        : create table album (album_id bigint not null, autor varchar(255), name varchar(255), price double, tittle varchar(255), primary key (album_id))
+2021-05-06 17:12:31.901 DEBUG 12761 --- [main] org.hibernate.SQL                        : create table record_company (tittle varchar(255) not null, primary key (tittle))
+2021-05-06 17:12:31.903 DEBUG 12761 --- [main] org.hibernate.SQL                        : create table track (track_id bigint not null, lycris varchar(255), name varchar(255), album_id bigint, primary key (track_id))
+2021-05-06 17:12:31.904 DEBUG 12761 --- [main] org.hibernate.SQL                        : alter table album add constraint FKddgdueegcg2b78wdyro38xntk foreign key (tittle) references record_company
+2021-05-06 17:12:31.909 DEBUG 12761 --- [main] org.hibernate.SQL                        : alter table track add constraint FKaxm9pbgk7ptorfyk3o6911q05 foreign key (album_id) references album
+2021-05-06 17:12:31.911  INFO 12761 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-06 17:12:31.920  INFO 12761 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:12:32.377  WARN 12761 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-06 17:12:32.543  INFO 12761 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:12:32.659  INFO 12761 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-06 17:12:32.953  INFO 12761 --- [main] c.a.example.SpringTestApplication        : Started SpringTestApplication in 3.31 seconds (JVM running for 4.401)
+2021-05-06 17:12:39.812  INFO 12761 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 17:12:39.812  INFO 12761 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 17:12:39.814  INFO 12761 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-05-06 17:12:40.029 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 17:12:40.034 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:12:40.042  INFO 12761 --- [http-nio-8080-exec-2] c.a.e.service.impl.AlbumServiceImpl      : save {"albumId":null,"name":"Kings of leon","autor":"Kings of leon","price":111.0,"recordCompany":{"tittle":"rise records"},"tracks":[{"trackId":null,"name":"Use somebody","lycris":"some lycris"},{"trackId":null,"name":"Find me","lycris":"some lycris"},{"trackId":null,"name":"Sex on fire","lycris":"some lycris"}]}
+2021-05-06 17:12:40.049 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:40.069 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:40.070 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:40.070 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:12:40.077 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into record_company (tittle) values (?)
+2021-05-06 17:12:40.078 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [rise records]
+2021-05-06 17:12:40.079 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into album (autor, name, price, tittle, album_id) values (?, ?, ?, ?, ?)
+2021-05-06 17:12:40.080 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:12:40.080 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [Kings of leon]
+2021-05-06 17:12:40.081 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [DOUBLE] - [111.0]
+2021-05-06 17:12:40.081 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [rise records]
+2021-05-06 17:12:40.082 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2021-05-06 17:12:40.082 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:12:40.084 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:12:40.085 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:12:40.085 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Use somebody]
+2021-05-06 17:12:40.085 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [2]
+2021-05-06 17:12:40.085 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:12:40.086 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:12:40.086 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:12:40.086 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Find me]
+2021-05-06 17:12:40.086 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [3]
+2021-05-06 17:12:40.087 DEBUG 12761 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:12:40.087 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:12:40.087 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:12:40.087 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Sex on fire]
+2021-05-06 17:12:40.087 TRACE 12761 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [4]
+2021-05-06 17:13:51.472 DEBUG 12761 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:13:51.475 TRACE 12761 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:13:51.489 DEBUG 12761 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:13:51.496 TRACE 12761 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:10.021 DEBUG 12761 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:14:10.021 TRACE 12761 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:10.023 DEBUG 12761 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:14:10.023 TRACE 12761 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:10.028 DEBUG 12761 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : call next value for hibernate_sequence
+2021-05-06 17:14:10.031 DEBUG 12761 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : insert into track (album_id, lycris, name, track_id) values (?, ?, ?, ?)
+2021-05-06 17:14:10.031 TRACE 12761 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:10.031 TRACE 12761 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [some lycris]
+2021-05-06 17:14:10.031 TRACE 12761 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Waste a moment]
+2021-05-06 17:14:10.031 TRACE 12761 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [5]
+2021-05-06 17:14:20.170 DEBUG 12761 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:14:20.170 TRACE 12761 --- [http-nio-8080-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:20.177 DEBUG 12761 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:14:20.178 TRACE 12761 --- [http-nio-8080-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:32.410 DEBUG 12761 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:14:32.413 TRACE 12761 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:32.495 DEBUG 12761 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select count(*) as col_0_0_ from track trackentit0_ where trackentit0_.track_id=?
+2021-05-06 17:14:32.496 TRACE 12761 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [5]
+2021-05-06 17:14:32.501 DEBUG 12761 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:14:32.501 TRACE 12761 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:32.505 DEBUG 12761 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : delete from track where track_id=?
+2021-05-06 17:14:32.506 TRACE 12761 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [5]
+2021-05-06 17:14:39.974 DEBUG 12761 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_0_, albumentit0_.autor as autor2_0_0_, albumentit0_.name as name3_0_0_, albumentit0_.price as price4_0_0_, albumentit0_.tittle as tittle5_0_0_, recordcomp1_.tittle as tittle1_1_1_ from album albumentit0_ left outer join record_company recordcomp1_ on albumentit0_.tittle=recordcomp1_.tittle where albumentit0_.album_id=?
+2021-05-06 17:14:39.974 TRACE 12761 --- [http-nio-8080-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:39.979 DEBUG 12761 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:14:39.980 TRACE 12761 --- [http-nio-8080-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-05-06 17:14:44.028  INFO 12761 --- [RMI TCP Connection(10)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-05-06 17:14:44.045  INFO 12761 --- [RMI TCP Connection(10)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:14:44.049  INFO 12761 --- [RMI TCP Connection(10)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:14:44.049  INFO 12761 --- [RMI TCP Connection(10)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-06 17:14:44.049 DEBUG 12761 --- [RMI TCP Connection(10)-127.0.0.1] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:14:44.052 DEBUG 12761 --- [RMI TCP Connection(10)-127.0.0.1] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:14:44.052 DEBUG 12761 --- [RMI TCP Connection(10)-127.0.0.1] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:14:44.052 DEBUG 12761 --- [RMI TCP Connection(10)-127.0.0.1] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:14:44.054  INFO 12761 --- [RMI TCP Connection(10)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-05-06 17:14:44.055  INFO 12761 --- [RMI TCP Connection(10)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 17:16:27.780  INFO 12908 --- [main] c.a.example.SpringTestApplication        : Starting SpringTestApplication using Java 15.0.1 on alejandroLaptop with PID 12908 (/home/alejandro/Documents/Projects/spring/spring-test/target/classes started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 17:16:27.783  INFO 12908 --- [main] c.a.example.SpringTestApplication        : No active profile set, falling back to default profiles: default
+2021-05-06 17:16:28.440  INFO 12908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-06 17:16:28.479  INFO 12908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
+2021-05-06 17:16:28.869  INFO 12908 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-05-06 17:16:28.877  INFO 12908 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 17:16:28.878  INFO 12908 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-06 17:16:28.947  INFO 12908 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-06 17:16:28.947  INFO 12908 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1121 ms
+2021-05-06 17:16:28.987  INFO 12908 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-06 17:16:29.121  INFO 12908 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-06 17:16:29.128  INFO 12908 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:aop'
+2021-05-06 17:16:29.247  INFO 12908 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-06 17:16:29.278  INFO 12908 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-05-06 17:16:29.363  INFO 12908 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-06 17:16:29.434  INFO 12908 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-06 17:16:29.961 DEBUG 12908 --- [main] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:16:29.962 DEBUG 12908 --- [main] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:16:29.962 DEBUG 12908 --- [main] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:16:29.963 DEBUG 12908 --- [main] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:16:29.964 DEBUG 12908 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2021-05-06 17:16:29.966 DEBUG 12908 --- [main] org.hibernate.SQL                        : create table album (album_id bigint not null, autor varchar(255), name varchar(255), price double, tittle varchar(255), primary key (album_id))
+2021-05-06 17:16:29.969 DEBUG 12908 --- [main] org.hibernate.SQL                        : create table record_company (tittle varchar(255) not null, primary key (tittle))
+2021-05-06 17:16:29.972 DEBUG 12908 --- [main] org.hibernate.SQL                        : create table track (track_id bigint not null, lycris varchar(255), name varchar(255), album_id bigint, primary key (track_id))
+2021-05-06 17:16:29.973 DEBUG 12908 --- [main] org.hibernate.SQL                        : alter table album add constraint FKddgdueegcg2b78wdyro38xntk foreign key (tittle) references record_company
+2021-05-06 17:16:29.977 DEBUG 12908 --- [main] org.hibernate.SQL                        : alter table track add constraint FKaxm9pbgk7ptorfyk3o6911q05 foreign key (album_id) references album
+2021-05-06 17:16:29.981  INFO 12908 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-06 17:16:29.986  INFO 12908 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:16:30.408  WARN 12908 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-06 17:16:30.566  INFO 12908 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:16:30.704  INFO 12908 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-05-06 17:16:30.975  INFO 12908 --- [main] c.a.example.SpringTestApplication        : Started SpringTestApplication in 3.579 seconds (JVM running for 4.234)
+2021-05-06 17:18:19.520  INFO 12908 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 17:18:19.520  INFO 12908 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 17:18:19.521  INFO 12908 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 17:18:19.638 DEBUG 12908 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select albumentit0_.album_id as album_id1_0_, albumentit0_.autor as autor2_0_, albumentit0_.name as name3_0_, albumentit0_.price as price4_0_, albumentit0_.tittle as tittle5_0_ from album albumentit0_ where albumentit0_.price between ? and ?
+2021-05-06 17:18:19.643 TRACE 12908 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [DOUBLE] - [50.0]
+2021-05-06 17:18:19.643 TRACE 12908 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DOUBLE] - [1000.0]
+2021-05-06 17:18:19.656 DEBUG 12908 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select recordcomp0_.tittle as tittle1_1_0_ from record_company recordcomp0_ where recordcomp0_.tittle=?
+2021-05-06 17:18:19.657 TRACE 12908 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [Metal records]
+2021-05-06 17:18:19.695 DEBUG 12908 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:18:19.696 TRACE 12908 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [100]
+2021-05-06 17:18:19.723 DEBUG 12908 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select tracks0_.album_id as album_id4_2_0_, tracks0_.track_id as track_id1_2_0_, tracks0_.track_id as track_id1_2_1_, tracks0_.album_id as album_id4_2_1_, tracks0_.lycris as lycris2_2_1_, tracks0_.name as name3_2_1_ from track tracks0_ where tracks0_.album_id=?
+2021-05-06 17:18:19.723 TRACE 12908 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [200]
+2021-05-06 17:18:47.170  INFO 12908 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-05-06 17:18:47.184  INFO 12908 --- [RMI TCP Connection(11)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:18:47.189  INFO 12908 --- [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-06 17:18:47.190  INFO 12908 --- [RMI TCP Connection(11)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-06 17:18:47.191 DEBUG 12908 --- [RMI TCP Connection(11)-127.0.0.1] org.hibernate.SQL                        : drop table if exists album CASCADE 
+2021-05-06 17:18:47.193 DEBUG 12908 --- [RMI TCP Connection(11)-127.0.0.1] org.hibernate.SQL                        : drop table if exists record_company CASCADE 
+2021-05-06 17:18:47.194 DEBUG 12908 --- [RMI TCP Connection(11)-127.0.0.1] org.hibernate.SQL                        : drop table if exists track CASCADE 
+2021-05-06 17:18:47.194 DEBUG 12908 --- [RMI TCP Connection(11)-127.0.0.1] org.hibernate.SQL                        : drop sequence if exists hibernate_sequence
+2021-05-06 17:18:47.197  INFO 12908 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-05-06 17:18:47.200  INFO 12908 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-05-06 17:19:37.753  INFO 13037 --- [main] c.a.e.controller.AlbumControllerSpec     : Starting AlbumControllerSpec using Java 15.0.1 on alejandroLaptop with PID 13037 (started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 17:19:37.757  INFO 13037 --- [main] c.a.e.controller.AlbumControllerSpec     : No active profile set, falling back to default profiles: default
+2021-05-06 17:19:39.451  INFO 13037 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:19:39.755  INFO 13037 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-05-06 17:19:39.756  INFO 13037 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-05-06 17:19:39.757  INFO 13037 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2021-05-06 17:19:39.791  INFO 13037 --- [main] c.a.e.controller.AlbumControllerSpec     : Started AlbumControllerSpec in 2.519 seconds (JVM running for 3.714)
+2021-05-06 17:19:40.113  WARN 13037 --- [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> com.alejandro.example.controller.AlbumController.save(com.alejandro.example.dto.AlbumDTO)]
+2021-05-06 17:19:40.261  INFO 13037 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:20:24.270  INFO 13164 --- [main] c.a.e.controller.AlbumControllerSpec     : Starting AlbumControllerSpec using Java 15.0.1 on alejandroLaptop with PID 13164 (started by alejandro in /home/alejandro/Documents/Projects/spring/spring-test)
+2021-05-06 17:20:24.274  INFO 13164 --- [main] c.a.e.controller.AlbumControllerSpec     : No active profile set, falling back to default profiles: default
+2021-05-06 17:20:26.019  INFO 13164 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 17:20:26.395  INFO 13164 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-05-06 17:20:26.396  INFO 13164 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-05-06 17:20:26.401  INFO 13164 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2021-05-06 17:20:26.444  INFO 13164 --- [main] c.a.e.controller.AlbumControllerSpec     : Started AlbumControllerSpec in 2.591 seconds (JVM running for 3.753)
+2021-05-06 17:20:26.748  WARN 13164 --- [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> com.alejandro.example.controller.AlbumController.save(com.alejandro.example.dto.AlbumDTO)]
+2021-05-06 17:20:26.872  INFO 13164 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

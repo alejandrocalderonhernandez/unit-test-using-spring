@@ -3,6 +3,8 @@ package com.alejandro.example.controller;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alejandro.example.dto.AlbumDTO;
+import com.alejandro.example.dto.TrackDTO;
 import com.alejandro.example.entity.AlbumEntity;
 import com.alejandro.example.entity.TrackEntity;
 import com.alejandro.example.service.IAlbumService;
@@ -36,7 +39,10 @@ public class AlbumController {
 	@GetMapping
 	public ResponseEntity<?> getAll() {
 		try {
-			return ResponseEntity.ok().body(this.service.getAll());
+			Set<AlbumDTO> response = this.service.getAll().stream()
+				.map(a -> (AlbumDTO) JsonUtil.bodyMapper(a, AlbumDTO.class))
+				.collect(Collectors.toSet());
+			return ResponseEntity.ok().body(response);
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)
@@ -83,9 +89,10 @@ public class AlbumController {
 	}
 	
 		@PutMapping("{id}")
-	public  ResponseEntity<?> update(@RequestBody AlbumEntity entity, @PathVariable Long id) {
+	public  ResponseEntity<?> update(@RequestBody AlbumDTO album, @PathVariable Long id) {
 		try {
-			return ResponseEntity.ok().body(this.service.update(entity, id));
+			AlbumEntity toUpdate = (AlbumEntity) JsonUtil.bodyMapper(album, AlbumEntity.class);
+			return ResponseEntity.ok().body(this.service.update(toUpdate, id));
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)
@@ -94,9 +101,10 @@ public class AlbumController {
 	}
 	
 	@PatchMapping("add/{id}")
-	public  ResponseEntity<?> addTrack(@RequestBody TrackEntity entity, @PathVariable Long id) {
+	public  ResponseEntity<?> addTrack(@RequestBody TrackDTO track, @PathVariable Long id) {
 		try {
-			return ResponseEntity.ok().body(this.service.addTrack(entity, id));
+			TrackEntity toAdd = (TrackEntity) JsonUtil.bodyMapper(track, TrackEntity.class);
+			return ResponseEntity.ok().body(this.service.addTrack(toAdd, id));
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)
@@ -105,9 +113,10 @@ public class AlbumController {
 	}
 	
 	@PatchMapping("remove/{id}")
-	public  ResponseEntity<?> removeTrack(@RequestBody TrackEntity entity, @PathVariable Long id) {
+	public  ResponseEntity<?> removeTrack(@RequestBody TrackEntity track, @PathVariable Long id) {
 		try {
-			return ResponseEntity.ok().body(this.service.removeTrack(entity, id));
+			TrackEntity toRemove = (TrackEntity) JsonUtil.bodyMapper(track, TrackEntity.class);
+			return ResponseEntity.ok().body(this.service.removeTrack(toRemove, id));
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)
@@ -118,7 +127,10 @@ public class AlbumController {
 	@GetMapping("between")
 	public  ResponseEntity<?> fondBetweenPrice(@RequestParam Double min, @RequestParam Double max) {
 		try {
-			return ResponseEntity.ok().body(this.service.findBetweenprice(min, max));
+			Set<AlbumDTO> response = this.service.findBetweenprice(min, max).stream()
+					.map(a -> (AlbumDTO) JsonUtil.bodyMapper(a, AlbumDTO.class))
+					.collect(Collectors.toSet());
+			return ResponseEntity.ok().body(response);
 		} catch (NoSuchElementException e) {
 			return ResponseEntity
 					.status(HttpStatus.NOT_FOUND)
