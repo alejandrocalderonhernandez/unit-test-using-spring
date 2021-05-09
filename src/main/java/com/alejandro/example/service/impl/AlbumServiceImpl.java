@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alejandro.example.dto.AlbumDTO;
+import com.alejandro.example.dto.TrackDTO;
 import com.alejandro.example.entity.AlbumEntity;
 import com.alejandro.example.entity.RecordCompanyEntity;
 import com.alejandro.example.entity.TrackEntity;
@@ -18,11 +21,11 @@ import com.alejandro.example.repository.AlbumRepository;
 import com.alejandro.example.repository.RecordCompanyRepository;
 import com.alejandro.example.repository.TrackRepository;
 import com.alejandro.example.service.IAlbumService;
+import com.alejandro.example.util.JsonUtil;
 
 @Service
 @Transactional
 public class AlbumServiceImpl implements IAlbumService {
-	
 	
 	private static final Logger log = LoggerFactory.getLogger(AlbumServiceImpl.class);
 
@@ -42,31 +45,33 @@ public class AlbumServiceImpl implements IAlbumService {
 	}
 
 	@Override
-	public Set<AlbumEntity> getAll() {
+	public Set<AlbumDTO> getAll() {
 		Set<AlbumEntity> response = new HashSet<>();
 		this.albumAepository.findAll().forEach(response::add);
 		if(response.isEmpty()) {
 			new NoSuchElementException("No data");
 		}
-		return response;
+		return response.stream()
+				.map(a -> (AlbumDTO) JsonUtil.bodyMapper(a, AlbumDTO.class))
+				.collect(Collectors.toSet());
 	}
 
 	@Override
-	public AlbumEntity save(AlbumEntity entity) {
-		if(entity.getRecordCompany() != null) {
-			Optional<RecordCompanyEntity> response = this.recordCompanyRepository.findById(entity.getRecordCompany().getTittle());
+	public AlbumDTO save(AlbumDTO album) {
+		AlbumEntity toSave = (AlbumEntity) JsonUtil.bodyMapper(album, AlbumEntity.class);
+		if(toSave.getRecordCompany() != null) {
+			Optional<RecordCompanyEntity> response = this.recordCompanyRepository.findById(toSave.getRecordCompany().getTittle());
 			if(response.isPresent()) {
-				System.out.println(response.get());
-				entity.setRecordCompany(response.get());
+				toSave.setRecordCompany(response.get());
 			}
 		}
-		log.info("save {}", entity.toString());
-		return this.albumAepository.save(entity);
+		log.info("save {}", toSave.toString());
+		return (AlbumDTO) JsonUtil.bodyMapper(this.albumAepository.save(toSave), AlbumDTO.class);
 	}
 
 	@Override
-	public AlbumEntity findById(Long id) {
-		return this.albumAepository.findById(id).orElseThrow();
+	public AlbumDTO findById(Long id) {
+		return (AlbumDTO) JsonUtil.bodyMapper(this.albumAepository.findById(id).orElseThrow(), AlbumDTO.class);
 	}
 
 	@Override
@@ -78,48 +83,51 @@ public class AlbumServiceImpl implements IAlbumService {
 	}
 
 	@Override
-	public AlbumEntity update(AlbumEntity entity, Long id) {
+	public AlbumDTO update(AlbumDTO album, Long id) {
 		if(!this.albumAepository.findById(id).isPresent()) {
 			throw new NoSuchElementException("The id dont exist");
 		}
 		AlbumEntity toUpdate = this.albumAepository.findById(id).get();
-		toUpdate.setAutor(entity.getAutor());
-		toUpdate.setName(entity.getName());
-		toUpdate.setPrice(entity.getPrice());
-		return this.albumAepository.save(toUpdate);
+		toUpdate.setAutor(album.getAutor());
+		toUpdate.setName(album.getName());
+		toUpdate.setPrice(album.getPrice());
+		return (AlbumDTO) JsonUtil.bodyMapper(this.albumAepository.save(toUpdate), AlbumDTO.class);
 	}
 
 	@Override
-	public AlbumEntity addTrack(TrackEntity track, Long id) {
+	public AlbumDTO addTrack(TrackDTO track, Long id) {
 		if(!this.albumAepository.findById(id).isPresent()) {
 			throw new NoSuchElementException("The id dont exist");
 		}
 		AlbumEntity toUpdate = this.albumAepository.findById(id).get();
-		toUpdate.addTrack(track);
-		return albumAepository.save(toUpdate);
+		toUpdate.addTrack((TrackEntity) JsonUtil.bodyMapper(track, TrackEntity.class));
+		return (AlbumDTO) JsonUtil.bodyMapper(this.albumAepository.save(toUpdate), AlbumDTO.class);
 	}
 
 	@Override
-	public AlbumEntity removeTrack(TrackEntity track, Long id) {
+	public AlbumDTO removeTrack(TrackDTO track, Long id) {
 		if(!this.albumAepository.findById(id).isPresent()) {
 			throw new NoSuchElementException("The id dont exist");
 		}
 		AlbumEntity toUpdate = this.albumAepository.findById(id).get();
+		
 		if(!this.trackRepository.existsById(track.getTrackId())) {
 			throw new NoSuchElementException("The track dont exist");
 		}
-		toUpdate.removeTrack(track);
+		toUpdate.removeTrack((TrackEntity) JsonUtil.bodyMapper(track, TrackEntity.class));
 		this.albumAepository.save(toUpdate);
-		return toUpdate;
+		return (AlbumDTO) JsonUtil.bodyMapper(this.albumAepository.save(toUpdate), AlbumDTO.class);
 	}
 
 	@Override
-	public Set<AlbumEntity> findBetweenprice(Double min, Double max) {
+	public Set<AlbumDTO> findBetweenprice(Double min, Double max) {
 		 Set<AlbumEntity> response = this.albumAepository.findByPriceBetween(min, max);
 		 if (response.size() == 0) {
 			 throw new NoSuchElementException("Not records");
 		 }
-		return response;
+		 return response.stream()
+					.map(a -> (AlbumDTO) JsonUtil.bodyMapper(a, AlbumDTO.class))
+					.collect(Collectors.toSet());
 	}
 
 }

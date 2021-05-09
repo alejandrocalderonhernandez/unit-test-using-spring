@@ -22,7 +22,7 @@ import com.alejandro.example.repository.TrackRepository;
 @SpringBootTest
 public class AlbumServiceSpec {
 
-	@MockBean
+/*	@MockBean
 	AlbumRepository albumRepository;
 	@MockBean
 	TrackRepository trackRepository;
@@ -80,5 +80,5 @@ public class AlbumServiceSpec {
 		doNothing().when(albumRepository).delete(ALBUM);
 		when(albumRepository.findById(DEFAULT_ID)).thenReturn(Optional.empty());
 		assertThrows(NoSuchElementException.class, () -> service.delete(DEFAULT_ID));
-	}
+	}*/
 }

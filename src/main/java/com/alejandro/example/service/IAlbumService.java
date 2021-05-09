@@ -2,16 +2,16 @@ package com.alejandro.example.service;
 
 import java.util.Set;
 
-import com.alejandro.example.entity.AlbumEntity;
-import com.alejandro.example.entity.TrackEntity;
+import com.alejandro.example.dto.AlbumDTO;
+import com.alejandro.example.dto.TrackDTO;
 import com.alejandro.example.service.common.SimpleService;
 
-public interface IAlbumService extends SimpleService<AlbumEntity, Long> {
+public interface IAlbumService extends SimpleService<AlbumDTO, Long> {
 	
-	public AlbumEntity addTrack(TrackEntity track, Long id);
+	public AlbumDTO addTrack(TrackDTO track, Long id);
 	
-	public AlbumEntity removeTrack(TrackEntity track, Long id);
+	public AlbumDTO removeTrack(TrackDTO track, Long id);
 	
-	public Set<AlbumEntity> findBetweenprice(Double min, Double max);
+	public Set<AlbumDTO> findBetweenprice(Double min, Double max);
 
 }

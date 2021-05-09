@@ -3,14 +3,23 @@ package com.alejandro.example.dto;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class AlbumDTO implements Serializable {
 
 	private Long albumId;
+	@NotNull(message = "The name is mandatory")
+	@Size(min = 2, max = 20, message = "The size have to length between 2 and 20 characters")
 	private String name;
+	@NotNull(message = "The autor is mandatory")
 	private String autor;
+	@NotNull(message = "The price is mandatory")
 	private Double price;
+	@Valid
 	@JsonIgnoreProperties(value = "albums", allowSetters = true)
 	private RecordCompanyDTO recordCompany;
 	@JsonIgnoreProperties(value = "album", allowSetters = true)

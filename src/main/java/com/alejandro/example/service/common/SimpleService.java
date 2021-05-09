@@ -7,8 +7,8 @@ public interface SimpleService<E extends Serializable, ID> {
 	
 	public E findById(ID id);
 	public Set<E> getAll();
-	public E save(E entity);
+	public E save(E model);
 	public void delete(ID id);
-	public E update(E entity, ID id);
+	public E update(E model, ID id);
 
 }
