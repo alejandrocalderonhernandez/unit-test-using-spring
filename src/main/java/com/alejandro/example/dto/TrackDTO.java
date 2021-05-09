@@ -8,6 +8,14 @@ public class TrackDTO implements Serializable{
 	private String name;
 	private String lycris;
 	private AlbumDTO album;
+	
+	public TrackDTO() {}
+	
+	public TrackDTO(Long trackId, String name, String lycris) {
+		this.trackId = trackId;
+		this.name = name;
+		this.lycris = lycris;
+	}
 
 	public Long getTrackId() {
 		return trackId;

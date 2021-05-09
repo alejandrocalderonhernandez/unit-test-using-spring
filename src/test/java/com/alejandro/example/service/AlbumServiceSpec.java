@@ -1,6 +1,7 @@
 package com.alejandro.example.service;
 
 import static com.alejandro.example.util.AlbumData.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.alejandro.example.entity.AlbumEntity;
+import com.alejandro.example.dto.AlbumDTO;
 import com.alejandro.example.repository.AlbumRepository;
 import com.alejandro.example.repository.RecordCompanyRepository;
 import com.alejandro.example.repository.TrackRepository;
@@ -22,7 +23,7 @@ import com.alejandro.example.repository.TrackRepository;
 @SpringBootTest
 public class AlbumServiceSpec {
 
-/*	@MockBean
+	@MockBean
 	AlbumRepository albumRepository;
 	@MockBean
 	TrackRepository trackRepository;
@@ -38,9 +39,17 @@ public class AlbumServiceSpec {
 	@DisplayName("call findById method happy path")
 	void findByIdHP() {
 		when(albumRepository.findById(DEFAULT_ID)).thenReturn(Optional.of(ALBUM));
-		AlbumEntity result = this.service.findById(DEFAULT_ID);
+		AlbumDTO result = this.service.findById(DEFAULT_ID);
 		verify(albumRepository).findById(DEFAULT_ID);
-		assertEquals(result, ALBUM);
+		assertAll(
+				() -> assertEquals(result, ALBUM_DTO),
+				() -> assertEquals(result.getAlbumId(), ALBUM.getAlbumId()),
+				() -> assertEquals(result.getName(), ALBUM.getName()),
+				() -> assertEquals(result.getAutor(), ALBUM.getAutor()),
+				() -> assertEquals(result.getPrice(), ALBUM.getPrice())
+		);
+		
+		
 	}
 	
 	@Test
@@ -49,6 +58,7 @@ public class AlbumServiceSpec {
 		when(albumRepository.findById(DEFAULT_ID)).thenReturn(Optional.of(ALBUM));
 		assertThrows(NoSuchElementException.class, () -> {
 			this.service.findById(INVALID_ID);
+			verify(albumRepository).findById(DEFAULT_ID);
 		});
 	}
 	
@@ -56,12 +66,12 @@ public class AlbumServiceSpec {
 	@DisplayName("call save method happy path")
 	void saveHP() {
 		String recordCompanyId = ALBUM.getRecordCompany().getTittle();
-		AlbumEntity toSave = ALBUM;
 		when(recordCompanyRepository.findById(recordCompanyId)).thenReturn(Optional.of(RECORD_COMPANY));
-		when(albumRepository.save(toSave)).thenReturn(ALBUM);
-		AlbumEntity result = this.service.save(toSave);
+		when(albumRepository.save(ALBUM)).thenReturn(ALBUM);
+		AlbumDTO result = this.service.save(ALBUM_DTO);
 		verify(recordCompanyRepository).findById(recordCompanyId);
-		assertEquals(result, ALBUM);
+		verify(albumRepository).save(ALBUM);
+		assertEquals(result, ALBUM_DTO);
 	}
 	
 	@Test
@@ -80,5 +90,5 @@ public class AlbumServiceSpec {
 		doNothing().when(albumRepository).delete(ALBUM);
 		when(albumRepository.findById(DEFAULT_ID)).thenReturn(Optional.empty());
 		assertThrows(NoSuchElementException.class, () -> service.delete(DEFAULT_ID));
-	}*/
+	}
 }

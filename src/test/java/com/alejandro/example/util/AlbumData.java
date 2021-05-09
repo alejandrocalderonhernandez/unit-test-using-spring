@@ -3,6 +3,9 @@ package com.alejandro.example.util;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import com.alejandro.example.dto.AlbumDTO;
+import com.alejandro.example.dto.RecordCompanyDTO;
+import com.alejandro.example.dto.TrackDTO;
 import com.alejandro.example.entity.AlbumEntity;
 import com.alejandro.example.entity.RecordCompanyEntity;
 import com.alejandro.example.entity.TrackEntity;
@@ -19,6 +22,16 @@ public class AlbumData {
 	
 	public static final AlbumEntity ALBUM;
 
+	public static final RecordCompanyDTO RECORD_COMPANY_DTO;
+	
+	public static final TrackDTO TRACK_1_DTO;
+	public static final TrackDTO TRACK_2_DTO;
+	public static final TrackDTO TRACK_3_DTO;
+	public static final TrackDTO TRACK_4_DTO;
+	public static final TrackDTO TRACK_5_DTO;
+	
+	public static final AlbumDTO ALBUM_DTO;
+	
 	static {
 		TRACK_1 = new TrackEntity(1L, "test-1", "lycris-1");
 		TRACK_2 = new TrackEntity(2L, "test-2", "lycris-2");
@@ -27,7 +40,7 @@ public class AlbumData {
 		TRACK_5 = new TrackEntity(5L, "test-5", "lycris-5");
 		
 		
-		RECORD_COMPANY = new RecordCompanyEntity("test-comany");
+		RECORD_COMPANY = new RecordCompanyEntity("test-comany-records");
 		
 		ALBUM = new AlbumEntity(
 				1L, 
@@ -36,5 +49,21 @@ public class AlbumData {
 				20.20, 
 				RECORD_COMPANY, 
 				new HashSet<>(Arrays.asList(TRACK_1, TRACK_2, TRACK_3, TRACK_4)));
+		
+		TRACK_1_DTO = new TrackDTO(1L, "test-1", "lycris-1");
+		TRACK_2_DTO = new TrackDTO(2L, "test-2", "lycris-2");
+		TRACK_3_DTO = new TrackDTO(3L, "test-3", "lycris-3");
+		TRACK_4_DTO = new TrackDTO(4L, "test-4", "lycris-4");
+		TRACK_5_DTO = new TrackDTO(5L, "test-5", "lycris-5");
+		
+		RECORD_COMPANY_DTO = new RecordCompanyDTO("test-comany-records");
+		
+		ALBUM_DTO = new AlbumDTO(
+				1L, 
+				"album-test", 
+				"actor-test", 
+				20.20, 
+				RECORD_COMPANY_DTO, 
+				new HashSet<>(Arrays.asList(TRACK_1_DTO, TRACK_2_DTO, TRACK_3_DTO, TRACK_4_DTO)));
 	}
 }

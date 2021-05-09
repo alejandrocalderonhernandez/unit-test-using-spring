@@ -23,6 +23,7 @@ public class JsonUtil {
 			String json = mapper.writeValueAsString(body);
 			return mapper.readValue(json, typeReturn);
 		} catch (JsonProcessingException e) {
+			e.printStackTrace();
 			throw new IllegalBodyException("Error to parse Body");
 		}
 	}

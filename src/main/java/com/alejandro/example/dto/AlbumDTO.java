@@ -27,6 +27,21 @@ public class AlbumDTO implements Serializable {
 	
 	public AlbumDTO() {}
 
+	public AlbumDTO(Long albumId,
+			@NotNull(message = "The name is mandatory") @Size(min = 2, max = 20, message = "The size have to length between 2 and 20 characters") String name,
+			@NotNull(message = "The autor is mandatory") String autor,
+			@NotNull(message = "The price is mandatory") Double price, @Valid RecordCompanyDTO recordCompany,
+			Set<TrackDTO> tracks) {
+		super();
+		this.albumId = albumId;
+		this.name = name;
+		this.autor = autor;
+		this.price = price;
+		this.recordCompany = recordCompany;
+		this.tracks = tracks;
+	}
+
+
 	public Long getAlbumId() {
 		return albumId;
 	}
@@ -74,6 +89,32 @@ public class AlbumDTO implements Serializable {
 	public void setTracks(Set<TrackDTO> tracks) {
 		this.tracks = tracks;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((albumId == null) ? 0 : albumId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AlbumDTO other = (AlbumDTO) obj;
+		if (albumId == null) {
+			if (other.albumId != null)
+				return false;
+		} else if (!albumId.equals(other.albumId))
+			return false;
+		return true;
+	}
+
 
 	private static final long serialVersionUID = 11221L;
 

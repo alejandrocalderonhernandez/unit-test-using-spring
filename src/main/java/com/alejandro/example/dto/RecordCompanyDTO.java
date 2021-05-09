@@ -16,6 +16,12 @@ public class RecordCompanyDTO implements Serializable{
 	@JsonIgnoreProperties(value = "recordCompany", allowSetters = true)
 	private Set<AlbumDTO> albums;
 	
+	public RecordCompanyDTO() {}
+	
+	public RecordCompanyDTO(String tittle) {
+		this.tittle = tittle;
+	}
+
 	public String getTittle() {
 		return tittle;
 	}

@@ -19,6 +19,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.alejandro.example.dto.AlbumDTO;
 import com.alejandro.example.entity.AlbumEntity;
 import com.alejandro.example.service.IAlbumService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebMvcTest(value = AlbumController.class)
 public class AlbumControllerSpec {
 	
-/*	@Autowired
+	@Autowired
 	MockMvc mockMvc;
 	
 	@MockBean
@@ -47,7 +48,7 @@ public class AlbumControllerSpec {
 	@DisplayName("call findById happy path")
 	void findByIdHP() throws Exception {
 		String endpoint = BASE_URL + "/" + DEFAULT_ID;
-		when(albumServiceMock.findById(DEFAULT_ID)).thenReturn(ALBUM);
+		when(albumServiceMock.findById(DEFAULT_ID)).thenReturn(ALBUM_DTO);
 		mockMvc.perform(get(endpoint).contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -67,12 +68,11 @@ public class AlbumControllerSpec {
 	@DisplayName("call save happy path")
 	void saveHP() throws Exception {
 		String endpoint = BASE_URL;
-		AlbumEntity toCreate = ALBUM;
-		when(albumServiceMock.save(any(AlbumEntity.class))).thenReturn(ALBUM);
+		when(albumServiceMock.save(any(AlbumDTO.class))).thenReturn(ALBUM_DTO);
 		mockMvc
 			.perform(post(endpoint)
 			.contentType(MediaType.APPLICATION_JSON)
-			.content(this.mapper.writeValueAsString(toCreate)))
+			.content(this.mapper.writeValueAsString(ALBUM_DTO)))
 				.andExpect(status().isCreated());
 	}
 	
@@ -86,5 +86,5 @@ public class AlbumControllerSpec {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(this.mapper.writeValueAsString(toCreate)))
 				.andExpect(status().isBadRequest());
-	}*/
+	}
 }
