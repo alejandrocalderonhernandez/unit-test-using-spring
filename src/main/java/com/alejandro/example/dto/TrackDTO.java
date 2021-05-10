@@ -2,6 +2,8 @@ package com.alejandro.example.dto;
 
 import java.io.Serializable;
 
+import com.alejandro.example.util.JsonUtil;
+
 public class TrackDTO implements Serializable{
 
 	private Long trackId;
@@ -48,6 +50,39 @@ public class TrackDTO implements Serializable{
 	public void setAlbum(AlbumDTO album) {
 		this.album = album;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return JsonUtil.toStringJson(this);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((trackId == null) ? 0 : trackId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TrackDTO other = (TrackDTO) obj;
+		if (trackId == null) {
+			if (other.trackId != null)
+				return false;
+		} else if (!trackId.equals(other.trackId))
+			return false;
+		return true;
+	}
+
+
 
 	private static final long serialVersionUID = 5585894285878319988L;
 	

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.alejandro.example.util.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class AlbumDTO implements Serializable {
@@ -115,6 +116,10 @@ public class AlbumDTO implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return JsonUtil.toStringJson(this);
+	}
 
 	private static final long serialVersionUID = 11221L;
 

@@ -44,15 +44,15 @@ public class AlbumController {
 		return ResponseEntity.ok().body(this.service.findById(id));
 	}
 	
+	@PutMapping("{id}")
+	public  ResponseEntity<AlbumDTO> update(@RequestBody AlbumDTO album, @PathVariable Long id) {
+		return ResponseEntity.ok().body(this.service.update(album, id));
+	}
+	
 	@DeleteMapping("{id}")
 	public ResponseEntity<AlbumDTO> delete(@PathVariable Long id) {
 		this.service.delete(id);
 		return ResponseEntity.ok().build();
-	}
-	
-	@PutMapping("{id}")
-	public  ResponseEntity<AlbumDTO> update(@RequestBody AlbumDTO album, @PathVariable Long id) {
-		return ResponseEntity.ok().body(this.service.update(album, id));
 	}
 	
 	@PatchMapping("add/{id}")
